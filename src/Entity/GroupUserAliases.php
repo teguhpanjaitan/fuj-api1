@@ -38,7 +38,7 @@ class GroupUserAliases
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $userRole;
+    private $userRole = "member"; //admin | member
 
     public function getId(): ?int
     {
