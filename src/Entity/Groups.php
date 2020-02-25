@@ -28,6 +28,12 @@ class Groups
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="groups")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $uCreatorId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +59,18 @@ class Groups
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getUCreatorId(): ?Users
+    {
+        return $this->uCreatorId;
+    }
+
+    public function setUCreatorId(?Users $uCreatorId): self
+    {
+        $this->uCreatorId = $uCreatorId;
 
         return $this;
     }
