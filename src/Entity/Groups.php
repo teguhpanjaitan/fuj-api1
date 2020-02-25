@@ -63,14 +63,14 @@ class Groups
         return $this;
     }
 
-    public function getUCreatorId(): ?Users
+    public function getUCreator(): ?Users
     {
-        return $this->uCreatorId;
+        return $this->uCreator;
     }
 
-    public function setUCreatorId(?Users $uCreatorId): self
+    public function setUCreator(?Users $uCreator): self
     {
-        $this->uCreatorId = $uCreatorId;
+        $this->uCreator = $uCreator;
 
         return $this;
     }
