@@ -32,7 +32,7 @@ class Groups
      * @ORM\ManyToOne(targetEntity="App\Entity\Users", inversedBy="groups")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $uCreatorId;
+    private $uCreator;
 
     public function getId(): ?int
     {
