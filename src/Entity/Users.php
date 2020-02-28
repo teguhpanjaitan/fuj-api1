@@ -35,11 +35,6 @@ class Users
      */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Groups", mappedBy="uCreatorId")
-     */
-    private $groups;
-
     public function __construct()
     {
         $this->groups = new ArrayCollection();
@@ -82,37 +77,6 @@ class Users
     public function setPassword(string $password): self
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Groups[]
-     */
-    public function getGroups(): Collection
-    {
-        return $this->groups;
-    }
-
-    public function addGroup(Groups $group): self
-    {
-        if (!$this->groups->contains($group)) {
-            $this->groups[] = $group;
-            $group->setUCreatorId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroup(Groups $group): self
-    {
-        if ($this->groups->contains($group)) {
-            $this->groups->removeElement($group);
-            // set the owning side to null (unless already changed)
-            if ($group->getUCreatorId() === $this) {
-                $group->setUCreatorId(null);
-            }
-        }
 
         return $this;
     }
