@@ -2,13 +2,9 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
  */
 class Users
@@ -35,9 +31,15 @@ class Users
      */
     private $password;
 
-    public function __construct()
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    public function __construct($username)
     {
-        $this->groups = new ArrayCollection();
+        $this->isActive = true;
+        $this->username = $username;
     }
 
     public function getId(): ?int
