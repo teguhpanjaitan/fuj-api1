@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\IssuesRepository")
  */
 class Issues
@@ -31,6 +33,12 @@ class Issues
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\IssuesPacks")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $issuePack;
 
     public function getId(): ?int
     {
@@ -69,6 +77,18 @@ class Issues
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getIssuePack(): ?IssuesPacks
+    {
+        return $this->issuePack;
+    }
+
+    public function setIssuePack(?IssuesPacks $issuePack): self
+    {
+        $this->issuePack = $issuePack;
 
         return $this;
     }
