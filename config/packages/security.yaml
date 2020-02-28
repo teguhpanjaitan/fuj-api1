@@ -1,13 +1,13 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
-        App\Entity\User:
+        App\Entity\Users:
             algorithm: argon2i
     providers:
         # users_in_memory: { memory: null }
         app_user_provider:
             entity:
-                class: App\Entity\User
+                class: App\Entity\Users
                 property: username
     firewalls:
         dev:

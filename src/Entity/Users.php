@@ -39,7 +39,7 @@ class Users implements UserInterface
 
     public function __construct($username)
     {
-        $this->isActive = true;
+        $this->isActive = false;
         $this->username = $username;
     }
 
