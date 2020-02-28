@@ -23,8 +23,8 @@ class HomeController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $username = $request->request->get('_username');
-        $password = $request->request->get('_password');
+        $username = $request->request->get('username');
+        $password = $request->request->get('password');
 
         $user = new Users($username);
         $user->setPassword($encoder->encodePassword($user, $password));
