@@ -29,6 +29,10 @@ services:
             - php
         volumes:
             - ./public:/srv/api/public:ro
+        ports:
+          - target: 80
+            published: 80
+            protocol: tcp
     db:
         image: 'mysql'
         environment:
