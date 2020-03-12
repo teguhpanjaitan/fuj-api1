@@ -31,6 +31,9 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	rm -f config/jwt/public.pem
 	openssl genpkey -out config/jwt/private.pem -aes256 -algorithm rsa -pass pass:fuj-api1 -pkeyopt rsa_keygen_bits:4096
 	openssl pkey -in config/jwt/private.pem -out config/jwt/public.pem -pubout -passin pass:fuj-api1
+
+	chmod +rwX config/jwt/private.pem
+	chmod +rwX config/jwt/public.pem
 fi
 
 exec docker-php-entrypoint "$@"
